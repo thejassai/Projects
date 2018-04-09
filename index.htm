@@ -31,9 +31,9 @@
 	}
 	.res1{
 		position:absolute;
-		left: 0;
-    top: 30%;
-    width: 100%;
+		left: 175px;
+    top: 50%;
+    width: 50%;
     text-align: center;
     font-size: 24px;
 	}
@@ -133,7 +133,6 @@ function check()
 		{
 			if(opts[i].checked)
 			{
-
 				ans=opts[i].value;
 				if(ans==answ)
 				{
@@ -189,13 +188,13 @@ window.onload=load;
 	<div class="col-lg-2"></div>
 	<div class="col-lg-8">
 		<div class="row subrow1">
-			<div class="col-lg-1" id="sno1" >
+			<div class="col-lg-1" id="sno1" style="visibility:hidden">
 				<p style="font-size:20px; color:red"><b id="sno">1</b>.</p>
 			</div>
 			<div class="col-lg-10 subrow">
-				<p id="ques" style="font-size:20px; color:red">Question goes here!!</p>
+				<p id="ques" style="font-size:20px; color:red; visibility:hidden">Question goes here!!</p>
 				<div id="opt" class="subrow2">
-					<div id="rdg">
+					<div id="rdg" style=" visibility:hidden">
 						<form style="font-size:18px">
 						<input  type="radio" name="group" value="1"><label id="op1">Option1</label><br>
 						<input  type="radio" name="group" value="2"><label id="op2">Option2</label><br>
@@ -208,10 +207,10 @@ window.onload=load;
 						<res >You've scored</res><br>
 						<res  id="re"></res>
 					</res>
-					<button class="btn btn-danger res" id="btn" onclick="unHideUi()">Start Test</button>
+					<button class="btn btn-danger res1" id="btn" onclick="unHideUi()">Start Test</button>
 				</div>
 			</div>
-			<div class="col-lg-1" id="misc">
+			<div class="col-lg-1" id="misc" style="visibility:hidden">
 				<p><b class="timer"><b id="min">00</b><b>:</b><b id ="sec">10</b></b></p>
 				<button class="btn btn-danger" style="margin-top:230px" onclick="check()">Next</button>
 				
