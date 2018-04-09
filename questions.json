@@ -1,0 +1,55 @@
+{
+	"quest":
+		[
+			{
+				"ques":"What is the biggest country in the world?",
+				"opts":["America","Russia","China","India"],
+				"answ":2
+			},
+			{
+				"ques":"How many people are there in the world?",
+				"opts":["6 billion","4 billion","1 billion","7 billion"],
+				"answ":1
+			},
+			{
+				"ques":"What is the biggest river in the world?",
+				"opts":["Nile","Amazon","Mississipi-Missouri","Chang Jiang(Yangtze)"],
+				"answ":1
+			},
+			{
+				"ques":"What is the highest mountain in the world?",
+				"opts":["K-2","Mount Everest","Kanchenjunga","Lhotse"],
+				"answ":2
+			},
+			{
+				"ques":"What is the largest coffee growing country in the world?",
+				"opts":["America","Italy","Brazil","England"],
+				"answ":3
+			},
+			{
+				"ques":"In what city were the 2000 Olympics held in australia?",
+				"opts":["Hobart","Melbourne","Canberra","Sydney"],
+				"answ":4
+			},
+			{
+				"ques":"What is the capital city of New zealand?",
+				"opts":["Auckland","Wellington","Christchurch","Hamilton"],
+				"answ":2
+			},
+			{
+				"ques":"Which state is the biggest in the US?",
+				"opts":["New York","California","Alaska","Texas"],
+				"answ":3
+			},
+			{
+				"ques":"Which indoor sport is the most popular in the US?",
+				"opts":["Swimming","Baseball","Indoor Soccer","Basketball"],
+				"answ":2
+			},
+			{
+				"ques":"In which country was golf first played?",
+				"opts":["England","Scotland","America","Australia"],
+				"answ":2
+			}
+		]
+}
