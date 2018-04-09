@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <title id="title1"></title>
+	<style>
+	.subrow1{
+		border:1px solid black;
+		padding:20px;
+		background-color:green;
+		margin-top:125px;	
+		height:350px;
+	}
+	.nxt{
+		margin-bottom:50px;
+	}
+	.timer{
+		font-size:20px;
+	}
+	.res{
+		position:absolute;
+		left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+	}
+	.res1{
+		position:absolute;
+		left: 0;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+	}
+	.res2{
+		position:absolute;
+		left: 0;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+	}
+	</style>
+<script>
+var ans=0,sno=1,answ=0,c=0;
+var tim=10;
+var ti=setInterval(run,1000);
+var to=setTimeout(check,10000);
+var q=0,obj,score=0,ques=10;
+var qst=new Array(10);
+for(var i=0;i<10;i++)
+{
+	qst[i]=0;
+}
+function rand()
+{
+	while(c==0)
+				{
+					q=Math.floor(Math.random()*10);
+					if(qst[q]==0)
+					{
+						qst[q]=1;
+						c=1;
+					}
+				}
+				c=0;
+				console.log(q);
+				console.log(qst);
+}
+function load()
+	{
+		var xhttp=new XMLHttpRequest();
+		xhttp.onreadystatechange=function(){
+			if((this.readyState==4)&&(this.status==200))
+			{
+				rand();
+				obj=JSON.parse(xhttp.response);
+				document.getElementById("ques").innerHTML=obj.quest[q].ques;
+				document.getElementById("op1").innerHTML=obj.quest[q].opts[0];
+				document.getElementById("op2").innerHTML=obj.quest[q].opts[1];
+				document.getElementById("op3").innerHTML=obj.quest[q].opts[2];
+				document.getElementById("op4").innerHTML=obj.quest[q].opts[3];
+				answ=obj.quest[q].answ;
+				
+				
+			}
+		}
+		xhttp.open("GET","questions.json",true);
+		xhttp.send();
+	}
+function run()
+	{
+		tim--;
+		if(tim<10)
+		{
+			document.getElementById("sec").innerHTML="0"+tim;
+		}
+		
+		if(tim==0)
+		{
+			if(tim<10)
+			{
+				document.getElementById("sec").innerHTML="0"+tim;
+			}
+			tim=10;
+		}
+	}
+function check()
+	{	
+		if(ques>1)
+		{
+			var opts=document.getElementsByName("group");
+		tim=10;
+		clearInterval(ti);
+		ti=setInterval(run,1000);
+		clearTimeout(to);
+		to=setTimeout(check,10000);
+		for(var i=0;i<opts.length;i++)
+		{
+			if(opts[i].checked)
+			{
+
+				ans=opts[i].value;
+				if(ans==answ)
+				{
+					score++;
+				}
+				else
+				{
+					score=score-0.25;
+				}
+				opts[i].checked=false;
+				
+				
+				
+				break;
+			}
+		}
+			rand();
+				document.getElementById("ques").innerHTML=obj.quest[q].ques;
+				document.getElementById("op1").innerHTML=obj.quest[q].opts[0];
+				document.getElementById("op2").innerHTML=obj.quest[q].opts[1];
+				document.getElementById("op3").innerHTML=obj.quest[q].opts[2];
+				document.getElementById("op4").innerHTML=obj.quest[q].opts[3];
+				document.getElementById("re").innerHTML=score;
+				answ=obj.quest[q].answ;
+				
+				q++;
+				ques--;
+		
+		sno++;
+		document.getElementById("sno").innerHTML=sno;
+		document.getElementById("sec").innerHTML=10;
+		ans=0;
+		}
+		else
+		{
+			clearInterval(ti);
+			clearTimeout(to);
+			document.getElementById("ques").style.visibility="hidden";
+			document.getElementById("sno1").style.visibility="hidden";
+			document.getElementById("misc").style.visibility="hidden";
+			document.getElementById("rdg").style.visibility="hidden";
+			document.getElementById("re").innerHTML=score;
+			document.getElementById("re1").style.visibility="visible";
+			
+		}
+	}
+window.onload=load;	
+</script>
+</head>
+
+<body style="background-image:url('project1.jpg')">
+<div class="row">
+	<div class="col-lg-2"></div>
+	<div class="col-lg-8">
+		<div class="row subrow1">
+			<div class="col-lg-1" id="sno1" >
+				<p style="font-size:20px; color:red"><b id="sno">1</b>.</p>
+			</div>
+			<div class="col-lg-10 subrow">
+				<p id="ques" style="font-size:20px; color:red">Question goes here!!</p>
+				<div id="opt" class="subrow2">
+					<div id="rdg">
+						<form style="font-size:18px">
+						<input  type="radio" name="group" value="1"><label id="op1">Option1</label><br>
+						<input  type="radio" name="group" value="2"><label id="op2">Option2</label><br>
+						<input  type="radio" name="group" value="3"><label id="op3">Option3</label><br>
+						<input  type="radio" name="group" value="4"><label id="op4">Option4</label><br>
+ 					</form>
+					</div>
+					<res class="res" id="re1" style="visibility:hidden">
+						<res  style=" font-size:24px" >Congratulatons!!</res><br>
+						<res   >You've scored</res><br>
+						<res  " id="re"></res>
+					</res>
+				</div>
+			</div>
+			<div class="col-lg-1" id="misc">
+				<p><b class="timer"><b id="min">00</b><b>:</b><b id ="sec">10</b></b></p>
+				<button class="btn btn-danger" style="margin-top:230px" onclick="check()">Next</button>
+				
+			</div>
+		</div>
+		
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+</body>
+</html>
