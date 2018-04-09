@@ -49,8 +49,7 @@
 <script>
 var ans=0,sno=1,answ=0,c=0;
 var tim=10;
-var ti=setInterval(run,1000);
-var to=setTimeout(check,10000);
+var ti,to;
 var q=0,obj,score=0,ques=10;
 var qst=new Array(10);
 for(var i=0;i<10;i++)
@@ -109,6 +108,16 @@ function run()
 			}
 			tim=10;
 		}
+	}
+function unHideUi()
+	{
+		ti=setInterval(run,1000);
+		to=setTimeout(check,10000);
+		document.getElementById("ques").style.visibility="visible";
+			document.getElementById("sno1").style.visibility="visible";
+			document.getElementById("misc").style.visibility="visible";
+			document.getElementById("rdg").style.visibility="visible";
+		document.getElementById("btn").style.visibility="hidden";
 	}
 function check()
 	{	
@@ -199,6 +208,7 @@ window.onload=load;
 						<res >You've scored</res><br>
 						<res  id="re"></res>
 					</res>
+					<button class="btn btn-danger res" id="btn" onclick="unHideUi()">Start Test</button>
 				</div>
 			</div>
 			<div class="col-lg-1" id="misc">
